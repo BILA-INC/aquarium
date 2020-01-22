@@ -2,12 +2,21 @@ package com.devops.aquarium.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 @JsonIgnoreProperties(value = {"numSS"}) //Listing attributes to not send in the JSON file
+@Entity
 public class Employee {
 
+    @Id
+    @GeneratedValue
     private int id;
+
     private String name;
     private String address;
+    //Privacy-related attributes
     private int numSS;
 
     public Employee() {
