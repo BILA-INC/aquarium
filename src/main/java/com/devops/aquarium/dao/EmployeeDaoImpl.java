@@ -10,7 +10,7 @@ import java.util.List;
 public class EmployeeDaoImpl implements EmployeeDao{
 
     public static List<Employee> employees= new ArrayList<>();
-    //Simulating a Data Base, for a while
+    //Simulating a Data Base, prior to take over JPA (coming soon)
     static {
         employees.add(new Employee(1, new String("De Lesseps"), "SUEZ", 2335));
         employees.add(new Employee(2, new String("Eshkol"), "Holy Land", 887));

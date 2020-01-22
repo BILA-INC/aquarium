@@ -31,6 +31,7 @@ public class EmployeeController {
 
         Employee employeeAdded =  employeeDao.save(employee);
 
+        //Sending a 204 signal in case of failure
         if (employeeAdded == null)
             return ResponseEntity.noContent().build();
 
@@ -39,7 +40,7 @@ public class EmployeeController {
                 .path("/{id}")
                 .buildAndExpand(employeeAdded.getId())
                 .toUri();
-
+        //Sending the standard 201 signal code in case of success
         return ResponseEntity.created(location).build();
     }
 }

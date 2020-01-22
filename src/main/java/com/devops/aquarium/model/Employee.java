@@ -2,7 +2,7 @@ package com.devops.aquarium.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(value = {"numSS"})
+@JsonIgnoreProperties(value = {"numSS"}) //Listing attributes to not send in the JSON file
 public class Employee {
 
     private int id;
