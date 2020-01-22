@@ -12,9 +12,9 @@ public class EmployeeDaoImpl implements EmployeeDao{
     public static List<Employee> employees= new ArrayList<>();
     //Simulating a Data Base, for a while
     static {
-        employees.add(new Employee(1, new String("De Lesseps"), "SUEZ"));
-        employees.add(new Employee(2, new String("Eshkol"), "Holy Land"));
-        employees.add(new Employee(3, new String("Gandalf"), "Mordore"));
+        employees.add(new Employee(1, new String("De Lesseps"), "SUEZ", 2335));
+        employees.add(new Employee(2, new String("Eshkol"), "Holy Land", 887));
+        employees.add(new Employee(3, new String("Gandalf"), "Mordore", 6755));
     }
 
     @Override
@@ -33,7 +33,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
     }
 
     @Override
-    public Employee Save(Employee employee) {
+    public Employee save(Employee employee) {
         employees.add(employee);
         return employee;
     }
