@@ -1,12 +1,14 @@
 package com.devops.aquarium.dao;
 
 import com.devops.aquarium.model.Employee;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
+
 
 import java.util.List;
 
-public interface EmployeeDao {
+@Repository
+public interface EmployeeDao extends JpaRepository<Employee, Integer> {
 
-    public List<Employee> findAll();
-    public Employee findById(int id);
-    public Employee save(Employee employee);
 }
