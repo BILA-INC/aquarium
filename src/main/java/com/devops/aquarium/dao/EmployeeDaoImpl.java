@@ -14,17 +14,40 @@ import java.util.Optional;
 @Repository
 public class EmployeeDaoImpl implements EmployeeDao{
 
-    public static List<Employee> employees= new ArrayList<>();
-    //Simulating a Data Base, prior to take over JPA (coming soon)
+    //Simulating a Database pending the H2 DB setting up
+    public static List<Employee> employees=new ArrayList<>();
     static {
-        employees.add(new Employee(1, "De Lesseps", "SUEZ", 2335));
-        employees.add(new Employee(2, "Eshkol", "Holy Land", 887));
-        employees.add(new Employee(3, "Gandalf", "Mordore", 6755));
+        employees.add(new Employee(1, "ghj","bvggg", 350));
+        employees.add(new Employee(2, "fghj", "fghj", 500));
+        employees.add(new Employee(3, "dfg", "tyui", 750));
     }
 
     @Override
-    public List<Employee> findAll() {
+    public List<Employee> findAllEmployees() {
         return employees;
+    }
+
+    @Override
+    public Employee findEmployeeById(int id) {
+        for (Employee employee : employees) {
+            if(employee.getId() ==id){
+                return employee;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Employee saveEmployee(Employee employee) {
+        employees.add(employee);
+        return employee;
+    }
+
+    //Methods declared in JpaRepository
+
+    @Override
+    public List<Employee> findAll() {
+        return null;
     }
 
     @Override
@@ -65,6 +88,11 @@ public class EmployeeDaoImpl implements EmployeeDao{
     @Override
     public void deleteAll() {
 
+    }
+
+    @Override
+    public <S extends Employee> S save(S s) {
+        return null;
     }
 
     @Override
@@ -137,18 +165,4 @@ public class EmployeeDaoImpl implements EmployeeDao{
         return false;
     }
 
-
-    public Employee findById(int id) {
-        for (Employee employee : employees) {
-            if(employee.getId() ==id){
-                return employee;
-            }
-        }
-        return null;
-    }
-
-    public Employee save(Employee employee) {
-        employees.add(employee);
-        return employee;
-    }
 }
