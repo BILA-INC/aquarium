@@ -27,29 +27,39 @@ public class EmployeeController {
     public MappingJacksonValue findAllEmployees() {
         //return employeeDao.findAllEmployees();
 
-        Iterable<Employee> employee= employeeDao.findAllEmployees();
+        Iterable<Employee> employee= employeeDao.findAll();
 
-        SimpleBeanPropertyFilter sorter = SimpleBeanPropertyFilter.serializeAllExcept("numSS");
+        //SimpleBeanPropertyFilter sorter = SimpleBeanPropertyFilter.serializeAllExcept("numSS");
 
-        FilterProvider sorterId = new SimpleFilterProvider().addFilter("Sorter", sorter);
+        //FilterProvider sorterId = new SimpleFilterProvider().addFilter("Sorter", sorter);
 
         MappingJacksonValue emp = new MappingJacksonValue(employee);
 
-        emp.setFilters(sorterId);
+        //emp.setFilters(sorterId);
 
         return emp;
     }
 
     @GetMapping(value = "/Employees/{id}")
     public Employee findEmployeeById(@PathVariable int id) {
-        return employeeDao.findEmployeeById(id);
+        return employeeDao.findById(id);
+    }
+
+    @GetMapping(value = "/Employees/GT/{id}")
+    public List<Employee> findByIdGT(@PathVariable int id) {
+        return employeeDao.findByIdGreaterThan(id);
+    }
+
+    @GetMapping(value = "/Employees/research/{search}")
+    public List<Employee> findByNameLike(@PathVariable String search) {
+        return employeeDao.findByNameLike("%"+search+"%");
     }
 
     //Adding a new Employee
     @PostMapping(value = "/Employees")
     public ResponseEntity<Object> saveEmployee(@RequestBody Employee employee) {
 
-        Employee employeeAdded =  employeeDao.saveEmployee(employee);
+        Employee employeeAdded =  employeeDao.save(employee);
 
         if (employeeAdded == null)
             return ResponseEntity.noContent().build(); //204 No Content in case of failure
@@ -61,5 +71,14 @@ public class EmployeeController {
                 .toUri();
 
         return ResponseEntity.created(location).build();
+    }
+
+    @DeleteMapping (value = "/Employees/delete/{id}")
+    public void deleteEmployee(@PathVariable int id) {
+        employeeDao.deleteById(id);
+    }
+    @PutMapping (value = "Employees/update/employees")
+    public void updateEmployee(@RequestBody Employee employee) {
+        employeeDao.save(employee);
     }
 }

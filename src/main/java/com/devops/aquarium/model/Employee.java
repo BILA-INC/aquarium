@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-@JsonIgnoreProperties(value = {"numSS"}) //Listing attributes to not send in the JSON file
+//@JsonIgnoreProperties(value = {"numSS"}) //Listing attributes to not send in the JSON file
 @Entity
 public class Employee {
 

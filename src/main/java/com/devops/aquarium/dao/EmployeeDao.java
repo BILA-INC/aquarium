@@ -9,7 +9,14 @@ import java.util.List;
 
 @Repository
 public interface EmployeeDao extends JpaRepository<Employee, Integer> {
-    public List<Employee> findAllEmployees();
-    public Employee findEmployeeById(int id);
-    public Employee saveEmployee(Employee employee);
+    //public List<Employee> findAllEmployees();
+    //public Employee findEmployeeById(int id);
+    //public Employee saveEmployee(Employee employee);
+
+    Employee findById(int id);
+
+    List<Employee> findByIdGreaterThan(int id);
+
+    List<Employee> findByNameLike(String s);
+
 }
