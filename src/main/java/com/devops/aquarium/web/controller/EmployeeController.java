@@ -2,20 +2,16 @@ package com.devops.aquarium.web.controller;
 
 import com.devops.aquarium.dao.EmployeeDao;
 import com.devops.aquarium.model.Employee;
-import com.fasterxml.jackson.databind.ser.FilterProvider;
-import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
-import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
+import com.devops.aquarium.web.exceptions.IdNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @RestController
 public class EmployeeController {
@@ -42,7 +38,9 @@ public class EmployeeController {
 
     @GetMapping(value = "/Employees/{id}")
     public Employee findEmployeeById(@PathVariable int id) {
-        return employeeDao.findById(id);
+        Employee employee=employeeDao.findById(id);
+        if(employee==null) throw new IdNotFoundException("Wrong Id");
+        return employee;
     }
 
     @GetMapping(value = "/Employees/GT/{id}")
@@ -57,7 +55,7 @@ public class EmployeeController {
 
     //Adding a new Employee
     @PostMapping(value = "/Employees")
-    public ResponseEntity<Object> saveEmployee(@RequestBody Employee employee) {
+    public ResponseEntity<Object> saveEmployee(@Valid @RequestBody Employee employee) {
 
         Employee employeeAdded =  employeeDao.save(employee);
 

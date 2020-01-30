@@ -1,10 +1,12 @@
 package com.devops.aquarium.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 
 //@JsonIgnoreProperties(value = {"numSS"}) //Listing attributes to not send in the JSON file
 @Entity
@@ -12,11 +14,15 @@ public class Employee {
 
     @Id
     @GeneratedValue
+    @Min(value = 1)
     private int id;
 
+    @Length(min=1, max=40)
     private String name;
+    @Length(min=3, max=40)
     private String address;
     //Privacy-related attributes
+    @Length(min=13, max=15, message="Wrong Numéro de Sécu")
     private int numSS;
 
     public Employee() {
