@@ -3,6 +3,8 @@ package com.devops.aquarium.web.controller;
 import com.devops.aquarium.dao.EmployeeDao;
 import com.devops.aquarium.model.Employee;
 import com.devops.aquarium.web.exceptions.IdNotFoundException;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJacksonValue;
@@ -13,6 +15,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
+@Api( description="API for, inter allia, CRUD operations on employees.")
 @RestController
 public class EmployeeController {
 
@@ -36,6 +39,7 @@ public class EmployeeController {
         return emp;
     }
 
+    @ApiOperation(value = "Send back a given employee as far as the provided Id is correct")
     @GetMapping(value = "/Employees/{id}")
     public Employee findEmployeeById(@PathVariable int id) {
         Employee employee=employeeDao.findById(id);
