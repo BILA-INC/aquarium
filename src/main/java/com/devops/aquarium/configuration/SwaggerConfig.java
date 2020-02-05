@@ -11,11 +11,13 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
+
+    //At X: Specifying the to-be-considered scope for documentation generation
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.devops.aquarium"))
+                .apis(RequestHandlerSelectors.basePackage("com.devops.aquarium"))  //------>X
                 .paths(PathSelectors.any())
                 .build();
     }

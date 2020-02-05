@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
-@Api( description="API for, inter allia, CRUD operations on employees.")
+@Api( description="API for, inter allia, CRUD-related operations on employees.")
 @RestController
 public class EmployeeController {
 
@@ -24,7 +24,6 @@ public class EmployeeController {
 
     @RequestMapping(value="/Employees", method=RequestMethod.GET)
     public MappingJacksonValue findAllEmployees() {
-        //return employeeDao.findAllEmployees();
 
         Iterable<Employee> employee= employeeDao.findAll();
 
@@ -43,7 +42,7 @@ public class EmployeeController {
     @GetMapping(value = "/Employees/{id}")
     public Employee findEmployeeById(@PathVariable int id) {
         Employee employee=employeeDao.findById(id);
-        if(employee==null) throw new IdNotFoundException("Wrong Id");
+        if(employee==null) throw new IdNotFoundException("Wrong Id"); //Customized exception throwing
         return employee;
     }
 
