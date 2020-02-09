@@ -17,6 +17,7 @@ import java.util.List;
 
 @Api( description="API for, inter allia, CRUD-related operations on employees.")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class EmployeeController {
 
     @Autowired
