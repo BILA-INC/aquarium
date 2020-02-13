@@ -1,6 +1,10 @@
 export class Employee {
   id: number;
-  name: string;
+  firstName: string;
+  lastName: string;
   address: string;
-  numSS: bigint;
+
+  setAttributes(id, firstName, lastName, address) {
+     this.id=id; this.firstName=firstName; this.lastName=lastName; this.address=address;
+  }
 }

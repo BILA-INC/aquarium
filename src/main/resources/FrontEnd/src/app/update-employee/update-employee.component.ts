@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Employee } from '../employee';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from '../employee.service';
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-update-employee',
@@ -10,14 +11,14 @@ import { EmployeeService } from '../employee.service';
 })
 export class UpdateEmployeeComponent implements OnInit {
 
-  id: number;
+  //id: number;
   employee: Employee;
 
   constructor(private route: ActivatedRoute,private router: Router,
               private employeeService: EmployeeService) { }
 
-  ngOnInit() {
-    this.employee = new Employee();
+  ngOnInit(){
+    /*this.employee = new Employee();
 
     this.id = this.route.snapshot.params['id'];
 
@@ -25,18 +26,23 @@ export class UpdateEmployeeComponent implements OnInit {
       .subscribe(data => {
         console.log(data)
         this.employee = data;
-      }, error => console.log(error));
+      }, error => console.log(error));*/
   }
 
   updateEmployee() {
-    this.employeeService.updateEmployee(this.id, this.employee)
+    this.employeeService.updateEmployee(this.employee)
       .subscribe(data => console.log(data), error => console.log(error));
     this.employee = new Employee();
     this.gotoList();
   }
 
-  onSubmit() {
-    this.updateEmployee();
+  onSubmit(form: NgForm) {
+  const id = form.value['id'];
+  const firstName = form.value['firstName'];
+  const lastName = form.value['lastName'];
+  const address = form.value['address'];
+  this.employee.setAttributes(id, firstName, lastName, address);
+  this.updateEmployee();
   }
 
   gotoList() {
