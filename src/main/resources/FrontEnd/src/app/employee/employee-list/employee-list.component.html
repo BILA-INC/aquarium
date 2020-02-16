@@ -1,4 +1,4 @@
-<script> document.location.reload(true) </script>
+<script> document.redirect.reload(true) </script>
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h2>Employee List</h2>
@@ -16,12 +16,12 @@
       </thead>
       <tbody>
       <tr *ngFor="let employee of employees | async">
-        <td>{{employee.id}}</td>
+        <td>{{this.employee.id}}</td>
         <td>{{employee.firstName}}</td>
         <td>{{employee.lastName}}</td>
         <td>{{employee.address}}</td>
         <td><button (click)="deleteEmployee(employee.id)" class="btn btn-danger">Delete</button>
-          <button (click)="employeeDetails(employee.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+          <button (click)="employeeDetails(employee.id)" class="btn btn-info" style="margin-left: 10px">More details</button>
         </td>
       </tr>
       </tbody>

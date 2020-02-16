@@ -36,8 +36,10 @@ export class CreateEmployeeComponent implements OnInit {
     const id = form.value['id'];
     const firstName = form.value['firstName'];
     const lastName = form.value['lastName'];
+    const birthdate = form.value['birthdate'];
     const address = form.value['address'];
-    this.employee.setAttributes(id, firstName, lastName, address);
+    const secuNum = form.value['secuNum'];
+    this.employee.setAttributes(id, firstName, lastName, birthdate, address, secuNum);
    // this.employee = EmployeeService.addEmployee(id, name, address, numSS);
     this.save();
     //this.submitted = true;
@@ -45,6 +47,7 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   gotoList() {
+    alert("Employee successfully added!")
     this.router.navigate(['all/employee']);
   }
 }

@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ["./employee-list.component.css"]
 })
 export class EmployeeListComponent implements OnInit {
-  employees: Observable<Employee[]>;
+  employees: Observable<any>;
 
   constructor(private employeeService: EmployeeService,
               private router: Router) {}

@@ -24,15 +24,14 @@ public class EmployeeController {
     @Autowired
     private EmployeeDao employeeDao;
 
-    @RequestMapping(value="/all/employee", method=RequestMethod.GET)
-    public MappingJacksonValue findAllEmployees() {
-
-        Iterable<Employee> employee= employeeDao.findAll();
+    @RequestMapping(value="all/employee", method=RequestMethod.GET)
+    public Iterable<Employee> findAllEmployees() {
+        Iterable<Employee> employees= employeeDao.findAll();
         //SimpleBeanPropertyFilter sorter = SimpleBeanPropertyFilter.serializeAllExcept("numSS");
         //FilterProvider sorterId = new SimpleFilterProvider().addFilter("Sorter", sorter);
-        MappingJacksonValue emp = new MappingJacksonValue(employee);
+        //MappingJacksonValue emp = new MappingJacksonValue(employee);
         //emp.setFilters(sorterId);
-        return emp;
+        return employees;
     }
 
     @ApiOperation(value = "Send back a given employee as far as the provided Id is correct")
@@ -60,10 +59,8 @@ public class EmployeeController {
     public Employee saveEmployee(@Valid @RequestBody Employee employee) {
               return employeeDao.save(employee);
         /*Employee employeeAdded =  employeeDao.save(employee);
-
         if (employeeAdded == null)
             return ResponseEntity.noContent().build(); //204 No Content in case of failure
-
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
