@@ -36,7 +36,7 @@ public class EmployeeController {
     }
 
     @ApiOperation(value = "Send back a given employee as far as the provided Id is correct")
-    @GetMapping(value = "/employees/{id}")
+    @GetMapping(value = "all/employee/{id}")
     public Employee findEmployeeById(@PathVariable int id) {
         Employee employee=employeeDao.findById(id);
         if(employee==null) throw new IdNotFoundException("Wrong Id"); //Customized exception throwing
@@ -72,12 +72,14 @@ public class EmployeeController {
         return ResponseEntity.created(location).build();*/
     }
 
-    @DeleteMapping (value = "/employees/delete/{id}")
+    @DeleteMapping (value = "delete/employee/{id}")
     public void deleteEmployee(@PathVariable int id) {
         employeeDao.deleteById(id);
     }
-    @PutMapping (value = "/update/employee")
-    public void updateEmployee(@RequestBody Employee employee) {
-        employeeDao.save(employee);
+    @PutMapping (value = "update/employee",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public Employee updateEmployee(@Valid @RequestBody Employee employee) {
+        return employeeDao.save(employee);
     }
 }

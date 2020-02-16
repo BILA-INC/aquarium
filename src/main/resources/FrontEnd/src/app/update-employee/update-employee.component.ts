@@ -11,41 +11,40 @@ import {NgForm} from "@angular/forms";
 })
 export class UpdateEmployeeComponent implements OnInit {
 
-  //id: number;
-  employee: Employee;
+  employee: Employee = new Employee();
+  submitted = false;
 
-  constructor(private route: ActivatedRoute,private router: Router,
-              private employeeService: EmployeeService) { }
+  constructor(private employeeService: EmployeeService,
+              private router: Router) { }
 
-  ngOnInit(){
-    /*this.employee = new Employee();
-
-    this.id = this.route.snapshot.params['id'];
-
-    this.employeeService.getEmployee(this.id)
-      .subscribe(data => {
-        console.log(data)
-        this.employee = data;
-      }, error => console.log(error));*/
+  ngOnInit() {
   }
 
-  updateEmployee() {
+  newEmployee(): void {
+    this.submitted = false;
+    // this.employee = new Employee();
+  }
+
+  save() {
     this.employeeService.updateEmployee(this.employee)
       .subscribe(data => console.log(data), error => console.log(error));
-    this.employee = new Employee();
+    //this.employee = new Employee();
     this.gotoList();
   }
 
   onSubmit(form: NgForm) {
-  const id = form.value['id'];
-  const firstName = form.value['firstName'];
-  const lastName = form.value['lastName'];
-  const address = form.value['address'];
-  this.employee.setAttributes(id, firstName, lastName, address);
-  this.updateEmployee();
+    const id = form.value['id'];
+    const firstName = form.value['firstName'];
+    const lastName = form.value['lastName'];
+    const address = form.value['address'];
+    this.employee.setAttributes(id, firstName, lastName, address);
+    // this.employee = EmployeeService.addEmployee(id, name, address, numSS);
+    this.save();
+    //this.submitted = true;
+    // this.save();
   }
 
   gotoList() {
-    this.router.navigate(['/employees']);
+    this.router.navigate(['all/employee']);
   }
 }

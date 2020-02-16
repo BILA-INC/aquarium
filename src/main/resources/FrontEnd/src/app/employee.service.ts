@@ -11,8 +11,8 @@ export class EmployeeService {
 
   constructor(private http: HttpClient) { }
 
-  getEmployee(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${id}`);
+  getEmployeeById(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/all/employee/${id}`);
   }
 
   createEmployee(employee: Object): Observable<Object> {
@@ -24,7 +24,7 @@ export class EmployeeService {
   }
 
   deleteEmployee(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/delete/${id}`, { responseType: 'text' });
+    return this.http.delete(`${this.baseUrl}/delete/employee/${id}`, { responseType: 'text' });
   }
 
   getEmployeesList(): Observable<any> {

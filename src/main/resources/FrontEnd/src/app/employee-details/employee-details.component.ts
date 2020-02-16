@@ -22,7 +22,7 @@ export class EmployeeDetailsComponent implements OnInit {
 
     this.id = this.route.snapshot.params['id'];
 
-    this.employeeService.getEmployee(this.id)
+    this.employeeService.getEmployeeById(this.id)
       .subscribe(data => {
         console.log(data)
         this.employee = data;
@@ -30,6 +30,6 @@ export class EmployeeDetailsComponent implements OnInit {
   }
 
   list(){
-    this.router.navigate(['employees']);
+    this.router.navigate(['all/employee']);
   }
 }
