@@ -8,13 +8,17 @@ import { EmployeeDetailsComponent } from './employee/employee-details/employee-d
 import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UpdateEmployeeComponent } from './employee/update-employee/update-employee.component';
+import {EmployeeService} from "./employee/employee.service";
+import { ConnexionInitComponent } from './connexion/connexion-init/connexion-init.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     CreateEmployeeComponent,
     EmployeeDetailsComponent,
     EmployeeListComponent,
-    UpdateEmployeeComponent
+    UpdateEmployeeComponent,
+    ConnexionInitComponent
   ],
   imports: [
     BrowserModule,
@@ -22,8 +26,8 @@ import { UpdateEmployeeComponent } from './employee/update-employee/update-emplo
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [EmployeeService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
 

@@ -1,4 +1,7 @@
 package com.devops.aquarium.dao;
 
-public interface PoolDao {
+import com.devops.aquarium.model.Pool;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PoolDao extends JpaRepository<Pool, Integer> {
 }

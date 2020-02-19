@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-  <!-- Links -->
+<nav class="">
+  <!-- Left links -->
   <button class="dropbtn"><a routerLink=""  routerLinkActive="active">Home</a></button>
   <div class="dropdown">
     <button class="dropbtn">Employee</button>
@@ -9,10 +9,19 @@
       <a routerLink="update/employee" class="nav-link" routerLinkActive="active">Update Employee</a>
     </div>
   </div>
+  <!-- Right links -->
+  <div class="topnav-right">
+      <a routerLink="connexion"  routerLinkActive="active">Connexion</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact us</a>
+  </div>
 </nav>
+
+<div *ngIf=" customizedMsg==true "> You're connected as : {{userName}} </div>
+
 <div class="container" >
   <br>
-  <h2 style="text-align: center;">{{title}} <br> Welcome to Aquarium - DevOps Project</h2>
+  <h2 style="text-align: center;">{{title}}</h2>
   <hr>
   <div class="card">
     <div class="card-body">

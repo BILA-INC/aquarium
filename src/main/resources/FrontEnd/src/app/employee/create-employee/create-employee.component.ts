@@ -9,10 +9,10 @@ import {NgForm} from "@angular/forms";
   templateUrl: './create-employee.component.html',
   styleUrls: ['./create-employee.component.css']
 })
+
 export class CreateEmployeeComponent implements OnInit {
 
   employee: Employee = new Employee();
-  submitted = false;
 
   constructor(private employeeService: EmployeeService,
               private router: Router) { }
@@ -20,30 +20,19 @@ export class CreateEmployeeComponent implements OnInit {
   ngOnInit() {
   }
 
-  newEmployee(): void {
-    this.submitted = false;
-   // this.employee = new Employee();
-  }
-
   save() {
     this.employeeService.createEmployee(this.employee)
       .subscribe(data => console.log(data), error => console.log(error));
-    //this.employee = new Employee();
     this.gotoList();
   }
 
   onSubmit(form: NgForm) {
-    const id = form.value['id'];
-    const firstName = form.value['firstName'];
-    const lastName = form.value['lastName'];
-    const birthdate = form.value['birthdate'];
-    const address = form.value['address'];
-    const secuNum = form.value['secuNum'];
-    this.employee.setAttributes(id, firstName, lastName, birthdate, address, secuNum);
-   // this.employee = EmployeeService.addEmployee(id, name, address, numSS);
+    const id = form.value['id']; const firstName = form.value['firstName'];
+    const lastName = form.value['lastName']; const birthdate = form.value['birthdate'];
+    const address = form.value['address']; const secuNum = form.value['secuNum'];
+    const password = form.value['password'];
+    this.employee.setAttributes(id, firstName, lastName, birthdate, address, secuNum, password);
     this.save();
-    //this.submitted = true;
-   // this.save();
   }
 
   gotoList() {

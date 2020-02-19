@@ -14,6 +14,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @Api( description="API for, inter allia, CRUD-related operations on species.")
 @RestController
@@ -40,8 +41,8 @@ public class SpecyController {
 
     @ApiOperation(value = "Send back a given specy as far as the provided Id is correct")
     @GetMapping(value = "/Species/{id}")
-    public Specy findSpecyById(@PathVariable int id) {
-        Specy specy = specyDao.findById(id);
+    public Optional<Specy> findSpecyById(@PathVariable int id) {
+        Optional<Specy> specy = specyDao.findById(id);
         if(specy==null) throw new IdNotFoundException("Wrong Id"); //Customized exception throwing
         return specy;
     }

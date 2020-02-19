@@ -1,7 +1,5 @@
-import { EmployeeDetailsComponent } from '../employee-details/employee-details.component';
 import { Observable } from "rxjs";
 import { EmployeeService } from "../employee.service";
-import { Employee } from "../employee";
 import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
 
@@ -10,7 +8,9 @@ import { Router } from '@angular/router';
   templateUrl: "./employee-list.component.html",
   styleUrls: ["./employee-list.component.css"]
 })
+
 export class EmployeeListComponent implements OnInit {
+
   employees: Observable<any>;
 
   constructor(private employeeService: EmployeeService,

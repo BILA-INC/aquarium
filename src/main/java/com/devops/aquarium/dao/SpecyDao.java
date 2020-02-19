@@ -8,10 +8,7 @@ import java.util.List;
 
 @Repository
 public interface SpecyDao extends JpaRepository<Specy, Integer> {
-
-    Specy findById(int id);
+    List<Specy> findByNameLike(String s);
 
     List<Specy> findByIdGreaterThan(int id);
-
-    List<Specy> findByNameLike(String s);
 }

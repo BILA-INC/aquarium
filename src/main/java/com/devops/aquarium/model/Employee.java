@@ -28,22 +28,20 @@ public class Employee {
     private String birthdate;
     private String address;
     private long secuNum;
+    private String password;
 
-    //Additional attributes
+//Additional attributes
     //private List<String> sectors;
     //private List<String> pools;
     //private List<String> activities;
 
-    public Employee() {
-    }
+    public Employee() {}
 
     public Employee(int id, String firstName, String lastName, String address) {
         this.id=id; this.firstName=firstName; this.lastName=lastName; this.address=address;
     }
 
-    public int getId() {
-        return this.id;
-    }
+    public int getId() { return this.id; }
     public void setId(int id) {
         this.id = id;
     }
@@ -65,6 +63,8 @@ public class Employee {
     public void setAddress(String address) { this.address = address; }
     public long getSecuNum() { return secuNum; }
     public void setSecuNum(long numSecu) { this.secuNum = numSecu; }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
 
     @Override
     public String toString() {
@@ -72,9 +72,10 @@ public class Employee {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", birthday='" + birthdate + '\'' +
+                ", birthdate='" + birthdate + '\'' +
                 ", address='" + address + '\'' +
-                ", numSecu='" + secuNum + '\'' +
+                ", secuNum=" + secuNum +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

@@ -8,7 +8,6 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -56,17 +55,17 @@ public class EmployeeController {
     @PostMapping(value = "add/employee",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public Employee saveEmployee(@Valid @RequestBody Employee employee) {
-              return employeeDao.save(employee);
-        /*Employee employeeAdded =  employeeDao.save(employee);
+    public ResponseEntity<Object> saveEmployee(@Valid @RequestBody Employee employee) {
+              //return employeeDao.save(employee);
+        Employee employeeAdded =  employeeDao.save(employee);
         if (employeeAdded == null)
-            return ResponseEntity.noContent().build(); //204 No Content in case of failure
+            return ResponseEntity.noContent().build(); //204 No Content (in case of failure)
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(employeeAdded.getId())
                 .toUri();
-        return ResponseEntity.created(location).build();*/
+        return ResponseEntity.created(location).build(); //201 Code : successful operation
     }
 
     @DeleteMapping (value = "delete/employee/{id}")
@@ -78,5 +77,20 @@ public class EmployeeController {
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public Employee updateEmployee(@Valid @RequestBody Employee employee) {
         return employeeDao.save(employee);
+    }
+
+    //Adding a new Employee
+    @PostMapping(value = "connexion",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public Employee checkCredentials(@Valid @RequestBody Employee employee) {
+
+        Iterable<Employee> employees= employeeDao.findAll();
+        for(Employee emp: employees) {
+            if( (emp.getId() == employee.getId()) &&
+                    (emp.getPassword()== employee.getPassword())) return emp;
+        }
+        employee.setPassword("Wrong credentials");
+        return employee;
     }
 }
