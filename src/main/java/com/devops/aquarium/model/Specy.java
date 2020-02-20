@@ -15,6 +15,8 @@ public class Specy {
     private String name; private String diet;
     private int lifeExpectancy; private boolean isEndangered; private int dangerLevel;
 
+    public Specy() {}
+
     public int getId() {
         return id;
     }
