@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+
+      <div class="form-group">
+        <label for="id">
+          Animal ID
+        </label>
+        <input type="number" id="id" class="form-control" name="id" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label for="name">
+          Animal Name
+        </label>
+        <input type="text" id="name" class="form-control" name="name" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label for="specy">
+          Animal Specy
+        </label>
+        <input type="text" id="specy" class="form-control" name="specy" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label for="sex">
+          Animal gender
+        </label>
+        <input type="text" id="sex" class="form-control" name="sex" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label for="sign">
+          Special distinguishing sign ?
+        </label>
+        <input type="text" id="sign" class="form-control" name="sign" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label for="arrivalDate">
+          Arrival Date
+        </label>
+        <input type="date" id="arrivalDate" class="form-control" name="arrivalDate" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label for="departureDate">
+          Departure Date
+        </label>
+        <input type="date" id="departureDate" class="form-control" name="departureDate" ngModel>
+      </div>
+
+      <button class="btn btn-primary" type="submit">Save</button>
+    </form>
+  </div>
+</div>

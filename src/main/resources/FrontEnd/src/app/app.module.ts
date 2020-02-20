@@ -10,15 +10,38 @@ import { HttpClientModule } from '@angular/common/http';
 import { UpdateEmployeeComponent } from './employee/update-employee/update-employee.component';
 import {EmployeeService} from "./employee/employee.service";
 import { ConnexionInitComponent } from './connexion/connexion-init/connexion-init.component';
+import { CreateAnimalComponent } from './animal/create-animal/create-animal.component';
+import { AnimalListComponent } from './animal/animal-list/animal-list.component';
+import { AnimalDetailsComponent } from './animal/animal-details/animal-details.component';
+import { CreatePoolComponent } from './pool/create-pool/create-pool.component';
+import { PoolDetailsComponent } from './pool/pool-details/pool-details.component';
+import { PoolListComponent } from './pool/pool-list/pool-list.component';
+import { CreateSpecyComponent } from './specy/create-specy/create-specy.component';
+import { SpecyDetailsComponent } from './specy/specy-details/specy-details.component';
+import { SpecyListComponent } from './specy/specy-list/specy-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+
     CreateEmployeeComponent,
     EmployeeDetailsComponent,
     EmployeeListComponent,
     UpdateEmployeeComponent,
-    ConnexionInitComponent
+
+    ConnexionInitComponent,
+
+    CreateAnimalComponent,
+    AnimalListComponent,
+    AnimalDetailsComponent,
+
+    CreatePoolComponent,
+    PoolDetailsComponent,
+    PoolListComponent,
+
+    CreateSpecyComponent,
+    SpecyDetailsComponent,
+    SpecyListComponent
   ],
   imports: [
     BrowserModule,
