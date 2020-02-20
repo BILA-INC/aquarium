@@ -62,7 +62,7 @@ public class EmployeeController {
             return ResponseEntity.noContent().build(); //204 No Content (in case of failure)
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
-                .path("/{id}")
+                .path("/all/employee/{id}")
                 .buildAndExpand(employeeAdded.getId())
                 .toUri();
         return ResponseEntity.created(location).build(); //201 Code : successful operation
@@ -79,18 +79,4 @@ public class EmployeeController {
         return employeeDao.save(employee);
     }
 
-    //Adding a new Employee
-    @PostMapping(value = "connexion",
-            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
-            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public Employee checkCredentials(@Valid @RequestBody Employee employee) {
-
-        Iterable<Employee> employees= employeeDao.findAll();
-        for(Employee emp: employees) {
-            if( (emp.getId() == employee.getId()) &&
-                    (emp.getPassword()== employee.getPassword())) return emp;
-        }
-        employee.setPassword("Wrong credentials");
-        return employee;
-    }
 }

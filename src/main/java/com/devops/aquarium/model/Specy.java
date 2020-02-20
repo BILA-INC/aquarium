@@ -12,11 +12,10 @@ import javax.validation.constraints.Min;
 public class Specy {
 
     @Id
-    @GeneratedValue
-    @Min(value = 1)
+    //@GeneratedValue
+    //@Min(value = 1)
     private int id;
-
-    @Length(min=1, max=40)
+    //@Length(min=1, max=40)
     private String name;
     private String diet;
     private int lifeExpectancy;
