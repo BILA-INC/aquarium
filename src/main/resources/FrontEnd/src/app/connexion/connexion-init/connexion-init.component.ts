@@ -14,7 +14,7 @@ export class ConnexionInitComponent implements OnInit {
 
   employee: Employee;
 
-  constructor(private employeeService: EmployeeService, private router: Router) { this.employeeService.isConnected=false; }
+  constructor(private employeeService: EmployeeService, private router: Router) { this.employeeService.isConnected=0; }
 
 
   ngOnInit(): void {}
@@ -31,10 +31,12 @@ export class ConnexionInitComponent implements OnInit {
 }
 
   private redirectRight() {
-    this.employeeService.isConnected=true;
+    this.employeeService.isConnected=1;
     this.employeeService.userName=this.employee.firstName;
     alert("Welcome    "+this.employee.firstName);}
 
   private redirectWrong() { alert("Wrong credential(s)");}
+
+
 
 }

@@ -1,1 +1,25 @@
-<p>specy-details works!</p>
+<div *ngIf="specy">
+  <div>
+    <label><b>ID: </b></label> {{specy.id}}
+  </div>
+  <div>
+    <label><b>Name: </b></label> {{specy.name}}
+  </div>
+  <div>
+    <label><b>Diet: </b></label> {{specy.diet}}
+  </div>
+  <div>
+    <label><b>Life Expectancy: </b></label> {{specy.lifeExpectancy}}
+  </div>
+  <div>
+    <label><b>Is endangered or no: </b></label> {{specy.isEndangered}}
+  </div>
+  <div>
+    <label><b>Danger Level: </b></label> {{specy.dangerLevel}}
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to listing</button><br>
+

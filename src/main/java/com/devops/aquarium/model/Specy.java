@@ -7,13 +7,13 @@ import javax.persistence.Id;
 @Entity
 public class Specy {
 
-    @Id
     //@GeneratedValue
     //@Min(value = 1)
+    @Id
     private int id;
     //@Length(min=1, max=40)
     private String name; private String diet;
-    private int lifeExpectancy; private boolean isEndangered; private int dangerLevel;
+    private int lifeExpectancy; private String isEndangered; private String dangerLevel;
 
     public Specy() {}
 
@@ -49,19 +49,19 @@ public class Specy {
         this.diet = diet;
     }
 
-    public boolean isEndangered() {
+    public String getIsEndangered() {
         return isEndangered;
     }
 
-    public void setEndangered(boolean endangered) {
-        isEndangered = endangered;
+    public void setIsEndangered(String isEndangered) {
+        this.isEndangered = isEndangered;
     }
 
-    public int getDangerLevel() {
+    public String getDangerLevel() {
         return dangerLevel;
     }
 
-    public void setDangerLevel(int dangerLevel) {
+    public void setDangerLevel(String dangerLevel) {
         this.dangerLevel = dangerLevel;
     }
 

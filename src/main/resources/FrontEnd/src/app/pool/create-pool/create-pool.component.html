@@ -1,1 +1,57 @@
-<p>create-pool works!</p>
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+
+      <div class="form-group">
+        <label for="id">
+          ID
+        </label>
+        <input type="number" id="id" class="form-control" name="id" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label for="maxPopulation">
+          Max Population
+        </label>
+        <input type="number" id="maxPopulation" class="form-control" name="maxPopulation" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label for="maxVolume">
+          Max Volume
+        </label>
+        <input type="number" id="maxVolume" class="form-control" name="maxVolume" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label for="isClean"> Is clean (or not) ? </label>
+        <select id="isClean" name="isClean" ngModel>
+          <option value="IS CLEAN">IS CLEAN</option>
+          <option value="ISN'T CLEAN">ISN'T CLEAN</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="zoneName">
+          Zone Name
+        </label>
+        <input type="text" id="zoneName" class="form-control" name="zoneName" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label for="zoneLocalisation">
+          Zone Localisation
+        </label>
+        <select id="zoneLocalisation" name="zoneLocalisation" ngModel>
+          <option value="Tropical Fish">Tropical Fish</option>
+          <option value="Polar Fish">Polar Fish</option>
+          <option value="Gold Fish">Gold Fish</option>
+          <option value="Spatial Fish">Spatial Fish</option>
+        </select>
+      </div>
+
+      <button class="btn btn-primary" type="submit">Save</button>
+    </form>
+  </div>
+</div>
+

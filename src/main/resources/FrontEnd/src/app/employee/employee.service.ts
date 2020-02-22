@@ -7,10 +7,10 @@ import {Employee} from "./employee";
 export class EmployeeService {
 
   private baseUrl = 'http://localhost:9090';
-  public isConnected : boolean;
+  public isConnected : number;
   public userName : String;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { this.isConnected = 0; }
 
   getEmployeeById(id: number): Observable<any> {return this.http.get(`${this.baseUrl}/all/employee/${id}`);}
 
@@ -23,6 +23,7 @@ export class EmployeeService {
     return this.http.delete(`${this.baseUrl}/delete/employee/${id}`, { responseType: 'text' });}
 
   getEmployeesList(): Observable<any> {return this.http.get(`${this.baseUrl}/all/employee`);}
+
 
   //Draft
   //addEmployee(id: number, name: string, address: string, numSS: number) {

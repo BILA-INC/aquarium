@@ -1,1 +1,57 @@
-<p>create-specy works!</p>
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+
+      <div class="form-group">
+        <label for="id">
+          ID
+        </label>
+        <input type="number" id="id" class="form-control" name="id" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label for="name">
+          Name
+        </label>
+        <input type="text" id="name" class="form-control" name="name" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label for="diet"> Diet ---> </label>
+        <select id="diet" name="diet" ngModel>
+          <option value="Alguivore">Alguivore</option>
+          <option value="Planktonivore">Planktonivore</option>
+          <option value="Piscivorous">Piscivorous</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="lifeExpectancy">
+          Life Expectancy
+        </label>
+        <input type="number" id="lifeExpectancy" class="form-control" name="lifeExpectancy" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label for="isEndangered"> Is endangered or no ? ---> </label>
+        <select id="isEndangered" name="isEndangered" ngModel>
+          <option value="YES">YES</option>
+          <option value="NO">NO</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="dangerLevel"> Danger Level ---> </label>
+        <select id="dangerLevel" name="dangerLevel" ngModel>
+          <option value="1">1</option> <option value="2">2</option> <option value="3">3</option> <option value="4">4</option>
+          <option value="5">5</option> <option value="6">6</option> <option value="7">7</option> <option value="8">8</option>
+          <option value="9">9</option> <option value="10">10</option>
+        </select>
+      </div>
+
+      <button class="btn btn-primary" type="submit">Save</button>
+    </form>
+  </div>
+</div>
+

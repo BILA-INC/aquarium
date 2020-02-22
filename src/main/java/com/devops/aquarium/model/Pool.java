@@ -9,7 +9,7 @@ public class Pool {
     @Id
     private int id;
     private int maxPopulation; private int maxVolume;
-    private boolean isClean; private String zoneName; String zoneLocalisation;
+    private String isClean; private String zoneName; String zoneLocalisation;
 
     public Pool() {
     }
@@ -38,12 +38,12 @@ public class Pool {
         this.maxVolume = maxVolume;
     }
 
-    public boolean isClean() {
+    public String getIsClean() {
         return isClean;
     }
 
-    public void setClean(boolean clean) {
-        isClean = clean;
+    public void setIsClean(String isClean) {
+        this.isClean = isClean;
     }
 
     public String getZoneName() {

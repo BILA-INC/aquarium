@@ -1,1 +1,30 @@
-<p>animal-details works!</p>
+<div *ngIf="this.employeeService.isConnected === 1">
+<div *ngIf="animal">
+  <div>
+    <label><b>ID: </b></label> {{animal.id}}
+  </div>
+  <div>
+    <label><b>Name: </b></label> {{animal.name}}
+  </div>
+  <div>
+    <label><b>Specy: </b></label> {{animal.specy}}
+  </div>
+  <div>
+    <label><b>Gender: </b></label> {{animal.gender}}
+  </div>
+  <div>
+    <label><b>Distinguishing Sign: </b></label> {{animal.sign}}
+  </div>
+  <div>
+    <label><b>Arrival Date: </b></label> {{animal.arrivalDate}}
+  </div>
+  <div>
+    <label><b>Departure Date: </b></label> {{animal.departureDate}}
+  </div>
+</div>
+</div>
+<h1 *ngIf="this.employeeService.isConnected == 0"> You have to identify yourself in order to view further details </h1>
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to the listing of animals</button><br>
+

@@ -27,10 +27,10 @@ export class CreateAnimalComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     const id = form.value['id']; const name = form.value['name'];
-    const specy = form.value['specy']; const sex = form.value['sex'];
+    const specy = form.value['specy']; const gender = form.value['gender'];
     const sign = form.value['sign']; const arrivalDate = form.value['arrivalDate'];
     const departureDate = form.value['departureDate'];
-    this.animal.setAttributes(id, name, specy, sex, sign, arrivalDate, departureDate);
+    this.animal.setAttributes(id, name, specy, gender, sign, arrivalDate, departureDate);
     this.save();
   }
 

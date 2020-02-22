@@ -7,7 +7,7 @@ import java.util.Date;
 @Entity
 public class Animal {
 
-    private @Id int id; private String name; private String specy; private boolean sex;
+    private @Id int id; private String name; private String specy; private String gender;
     private String sign; private Date arrivalDate; private Date departureDate;
 
     public Animal() {}
@@ -28,20 +28,20 @@ public class Animal {
         this.name = name;
     }
 
-    public boolean isSex() {
-        return sex;
-    }
-
-    public void setSex(boolean sex) {
-        this.sex = sex;
-    }
-
     public String getSpecy() {
         return specy;
     }
 
     public void setSpecy(String specy) {
         this.specy = specy;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getSign() {
@@ -74,7 +74,7 @@ public class Animal {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", specy='" + specy + '\'' +
-                ", sex=" + sex +
+                ", gender=" + gender +
                 ", sign='" + sign + '\'' +
                 ", arrivalDate=" + arrivalDate +
                 ", departureDate=" + departureDate +

@@ -1,1 +1,25 @@
-<p>pool-details works!</p>
+<div *ngIf="pool">
+  <div>
+    <label><b>ID: </b></label> {{pool.id}}
+  </div>
+  <div>
+    <label><b>Max Population: </b></label> {{pool.maxPopulation}}
+  </div>
+  <div>
+    <label><b>Max Volume: </b></label> {{pool.maxVolume}}
+  </div>
+  <div>
+    <label><b>Is clean (or not): </b></label> {{pool.isClean}}
+  </div>
+  <div>
+    <label><b>Zone Name: </b></label> {{pool.zoneName}}
+  </div>
+  <div>
+    <label><b>Zone localisation: </b></label> {{pool.zoneLocalisation}}
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to listing</button><br>
+

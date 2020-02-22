@@ -16,6 +16,7 @@ import java.net.URI;
 
 @Api( description="API for, inter allia, CRUD-related operations on pools.")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class PoolController {
 
     @Autowired
@@ -23,8 +24,7 @@ public class PoolController {
 
     @RequestMapping(value="all/pool", method= RequestMethod.GET)
     public Iterable<Pool> findAllPools() {
-        Iterable<Pool> pools= poolDao.findAll();
-        return pools;
+        return poolDao.findAll();
     }
 
     @ApiOperation(value = "Send back a given pool")

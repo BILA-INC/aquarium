@@ -1,1 +1,30 @@
-<p>animal-list works!</p>
+<script> document.redirect.reload(true) </script>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Listing of animals</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Specy</th>
+        <th>Gender</th>
+        <!-- <th>Actions</th> -->
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let animal of animals | async">
+        <td>{{this.animal.id}}</td>
+        <td>{{animal.name}}</td>
+        <td>{{animal.specy}}</td>
+        <td>{{animal.gender}}</td>
+        <td><button (click)="deleteAnimal(animal.id)" class="btn btn-danger">Delete</button>
+          <button (click)="animalDetails(animal.id)" class="btn btn-info" style="margin-left: 10px">More details</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

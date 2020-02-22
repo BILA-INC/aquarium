@@ -32,17 +32,18 @@
   </div>
   <!-- Right links -->
   <div class="topnav-right">
-      <a routerLink="connexion"  routerLinkActive="active">Connexion</a>
+      <a routerLink="connexion"  routerLinkActive="active" *ngIf="this.employeeService.isConnected == 0">Connexion</a>
+      <a routerLink="connexion"  *ngIf="this.employeeService.isConnected === 1" (click)="disconnect()" >
+        You're connected as : {{this.employeeService.userName}}
+      - Disconnect ?</a>
       <a href="#about">About</a>
       <a href="#contact">Contact us</a>
   </div>
 </nav>
 
-<div *ngIf=" customizedMsg==true "> You're connected as : {{userName}} </div>
-
 <div class="container" >
   <br>
-  <h2 style="text-align: center;">{{title}}</h2>
+  <h2 style="text-align: center;" *ngIf="this.employeeService.isConnected === 0">{{title}}</h2>
   <hr>
   <div class="card">
     <div class="card-body">

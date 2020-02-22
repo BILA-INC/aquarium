@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {EmployeeService} from "./employee/employee.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -8,15 +9,15 @@ import {EmployeeService} from "./employee/employee.service";
 })
 export class AppComponent {
   title = 'Welcome to Aquarium';
-  customizedMsg: boolean;
-  userName: String;
 
-  constructor(private employeeService: EmployeeService) {
-    this.customizedMsg =this.employeeService.isConnected;
-    this.userName=this.employeeService.userName;
-  }
-  ngOnInit(): void {
-    this.customizedMsg =this.employeeService.isConnected;
-    this.userName=this.employeeService.userName;
-  }
+  constructor(private employeeService: EmployeeService, private router: Router) {}
+
+  ngOnInit(): void {}
+
+  disconnect() {
+    this.employeeService.isConnected=0;
+    alert("You gonna to be disconnected")
+    this.router.navigate(['']);
+  };
+
 }
