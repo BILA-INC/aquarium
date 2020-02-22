@@ -36,8 +36,8 @@
       <a routerLink="connexion"  *ngIf="this.employeeService.isConnected === 1" (click)="disconnect()" >
         You're connected as : {{this.employeeService.userName}}
       - Disconnect ?</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact us</a>
+      <a routerLink="about">About</a>
+      <a routerLink="contact">Contact us</a>
   </div>
 </nav>
 

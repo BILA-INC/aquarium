@@ -14,6 +14,8 @@ import {SpecyDetailsComponent} from "./specy/specy-details/specy-details.compone
 import {PoolListComponent} from "./pool/pool-list/pool-list.component";
 import {CreatePoolComponent} from "./pool/create-pool/create-pool.component";
 import {PoolDetailsComponent} from "./pool/pool-details/pool-details.component";
+import {AboutComponent} from "./about/about.component";
+import {ContactComponent} from "./contact/contact.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
@@ -36,6 +38,10 @@ const routes: Routes = [
   { path: 'all/pool', component: PoolListComponent },
   { path: 'add/pool', component: CreatePoolComponent },
   { path: 'details/pool/:id', component: PoolDetailsComponent },
+
+  { path: 'about', component: AboutComponent },
+
+  { path: 'contact', component: ContactComponent },
 
 ];
 

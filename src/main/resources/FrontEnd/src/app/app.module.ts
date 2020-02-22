@@ -19,6 +19,8 @@ import { PoolListComponent } from './pool/pool-list/pool-list.component';
 import { CreateSpecyComponent } from './specy/create-specy/create-specy.component';
 import { SpecyDetailsComponent } from './specy/specy-details/specy-details.component';
 import { SpecyListComponent } from './specy/specy-list/specy-list.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,11 @@ import { SpecyListComponent } from './specy/specy-list/specy-list.component';
 
     CreateSpecyComponent,
     SpecyDetailsComponent,
-    SpecyListComponent
+    SpecyListComponent,
+
+    AboutComponent,
+
+    ContactComponent
   ],
   imports: [
     BrowserModule,

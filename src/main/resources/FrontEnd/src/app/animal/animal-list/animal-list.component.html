@@ -20,9 +20,17 @@
         <td>{{animal.name}}</td>
         <td>{{animal.specy}}</td>
         <td>{{animal.gender}}</td>
-        <td><button (click)="deleteAnimal(animal.id)" class="btn btn-danger">Delete</button>
+
+        <td *ngIf="this.employeeService.isConnected == 1">
+          <button (click)="deleteAnimal(animal.id)" class="btn btn-danger">Delete</button>
           <button (click)="animalDetails(animal.id)" class="btn btn-info" style="margin-left: 10px">More details</button>
         </td>
+
+        <td *ngIf="this.employeeService.isConnected == 0">
+          <button (click)="detailsAlert()" class="btn btn-danger">Delete</button>
+          <button (click)="detailsAlert()" class="btn btn-info" style="margin-left: 10px">More details</button>
+        </td>
+
       </tr>
       </tbody>
     </table>

@@ -23,7 +23,10 @@
   </div>
 </div>
 </div>
-<h1 *ngIf="this.employeeService.isConnected == 0"> You have to identify yourself in order to view further details </h1>
+
+<h1 *ngIf="this.employeeService.isConnected == 0"> you've to get identified in order to view further details </h1>
+
+
 <br>
 <br>
 <button (click)="list()" class="btn btn-primary">Back to the listing of animals</button><br>
