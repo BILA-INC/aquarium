@@ -3,6 +3,7 @@ import { Animal } from '../animal';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {NgForm} from "@angular/forms";
+import {EmployeeService} from "../../employee/employee.service";
 
 @Component({
   selector: 'app-create-animal',
@@ -15,7 +16,7 @@ export class CreateAnimalComponent implements OnInit {
   animal: Animal = new Animal();
 
   constructor(private animalService: AnimalService,
-              private router: Router) {}
+              private router: Router, private employeeService: EmployeeService) {}
 
   ngOnInit() {}
 
@@ -37,5 +38,9 @@ export class CreateAnimalComponent implements OnInit {
   gotoList() {
     alert("New host successfully added!")
     this.router.navigate(['all/animal']);
+  }
+
+  detailsAlert() {
+    alert("You've to get identified in order to view further details or delete an item!");
   }
 }

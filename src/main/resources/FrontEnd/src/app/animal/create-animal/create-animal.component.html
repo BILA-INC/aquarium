@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="this.employeeService.isConnected == 1">
   <div class="col-sm-8 col-sm-offset-2">
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
 
@@ -55,7 +55,10 @@
         <input type="date" id="departureDate" class="form-control" name="departureDate" ngModel>
       </div>
 
-      <button class="btn btn-primary" type="submit">Save</button>
+      <input type="reset" value="Reset" class="btn btn-primary"> <------>
+      <button class="btn btn-primary" type="submit" *ngIf="this.employeeService.isConnected == 1">Save</button>
+      <button (click)="detailsAlert()" class="btn btn-primary" type="button" *ngIf="this.employeeService.isConnected == 0">Save</button>
+
     </form>
   </div>
 </div>

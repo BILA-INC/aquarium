@@ -1,5 +1,6 @@
-<div class="row">
+<div class="row" *ngIf="this.employeeService.isConnected == 1">
   <div class="col-sm-8 col-sm-offset-2">
+    Vous devez etre connecté en tant que MANAGER (gestionnaire) pour affecter, promouvoir, etc... un employé. Sinon vous cliquerez dans le vide
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
 
       <div class="form-group">
@@ -51,7 +52,45 @@
         <input type="password" id="password" class="form-control" name="password" ngModel>
       </div>
 
-      <button class="btn btn-primary" type="submit">Save</button>
+      <div class="form-group">
+        <label for="position"> Position ---> </label>
+        <select id="position" name="position" ngModel>
+          <option value="Responsable">Responsable</option> <option value="Manager">Manager</option>
+          <option value="Visitor">Visitor</option> <option value="Staff Member">Staff Memeber</option>
+          <option value="Other">Staff Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="pool"> Pool ---> </label>
+        <select id="pool" name="pool" ngModel>
+          <option value="Pool 1">Pool 1</option> <option value="Pool 2">Pool 2</option>
+          <option value="Pool 3">Pool 3</option> <option value="Pool 4">Pool 4</option>
+          <option value="Pool 5">Pool 5</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="zone"> Zone ---> </label>
+        <select id="zone" name="zone" ngModel>
+          <option value="Tropical Fish">Tropical Fish</option> <option value="Polar Fish">Polar Fish</option>
+          <option value="Gold Fish">Gold Fish</option> <option value="Spatial Fish">Spatial Fish</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="activity"> Activity ---> </label>
+        <select id="activity" name="activity" ngModel>
+          <option value="Feeding">Feeding</option> <option value="Water Quality Maintaining">Water Quality Maintaining</option>
+          <option value="Safety Control">Safety Control</option> <option value="Veterinary Examination">Veterinary Examination</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <input type="reset" value="Reset" class="btn btn-primary"> <------>
+      <button class="btn btn-primary" type="submit" *ngIf="this.employeeService.position=='MANAGER' ">Save</button>
+      <button class="btn btn-primary" type="submit" (click)="this.alertMessage()">Save</button>
     </form>
   </div>
 </div>

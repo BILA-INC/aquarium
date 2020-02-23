@@ -37,4 +37,8 @@ export class EmployeeListComponent implements OnInit {
   employeeDetails(id: number){
     this.router.navigate(['details/employee', id]);
   }
+
+  detailsAlert() {
+    alert("you've to get identified as 'MANAGER' (gestionnaire) in order to view further details or delete an item!");
+  }
 }

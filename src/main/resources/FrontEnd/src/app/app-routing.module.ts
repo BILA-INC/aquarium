@@ -16,6 +16,9 @@ import {CreatePoolComponent} from "./pool/create-pool/create-pool.component";
 import {PoolDetailsComponent} from "./pool/pool-details/pool-details.component";
 import {AboutComponent} from "./about/about.component";
 import {ContactComponent} from "./contact/contact.component";
+import {ActivityListComponent} from "./activity/activity-list/activity-list.component";
+import {CreateActivityComponent} from "./activity/create-activity/create-activity.component";
+import {ActivityDetailsComponent} from "./activity/activity-details/activity-details.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
@@ -38,6 +41,10 @@ const routes: Routes = [
   { path: 'all/pool', component: PoolListComponent },
   { path: 'add/pool', component: CreatePoolComponent },
   { path: 'details/pool/:id', component: PoolDetailsComponent },
+
+  { path: 'all/activity', component: ActivityListComponent },
+  { path: 'add/activity', component: CreateActivityComponent },
+  { path: 'details/activity/:id', component: ActivityDetailsComponent },
 
   { path: 'about', component: AboutComponent },
 

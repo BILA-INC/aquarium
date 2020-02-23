@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2" *ngIf="this.employeeService.isConnected == 1">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+
+      <div class="form-group">
+        <label for="id">
+          Activity ID
+        </label>
+        <input type="number" id="id" class="form-control" name="id" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label for="day"> Day of Week ---> </label>
+        <select id="day" name="day" ngModel>
+          <option value="Monday">Monday</option>
+          <option value="Tuesday">Tuesday</option>
+          <option value="Wednesday">Wednesday</option>
+          <option value="Thursday">Thursday</option>
+          <option value="Friday">Friday</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="sh">
+          Activity Starting Hour
+        </label>
+        <input type="time" id="sh" class="form-control" name="sh" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label for="eh">
+          Activity Ending Hour
+        </label>
+        <input type="time" id="eh" class="form-control" name="eh" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label for="ppc"> Public or Private Clearance ---> </label>
+        <select id="ppc" name="ppc" ngModel>
+          <option value="Public">Public</option>
+          <option value="Private">Private</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="name"> Name ---> </label>
+        <select id="name" name="name" ngModel>
+          <option value="Feeding">Feeding</option>
+          <option value="Safety Control">Safety Control</option>
+          <option value="Veterinary Examination">Veterinary Examination</option>
+          <option value="Water Quality Maintaining">Water Quality Maintaining</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <input type="reset" value="Reset" class="btn btn-primary"> <------>
+      <button class="btn btn-primary" type="submit" *ngIf="this.employeeService.isConnected == 1">Save</button>
+      <button (click)="detailsAlert()" class="btn btn-primary" type="button" *ngIf="this.employeeService.isConnected == 0">Save</button>
+
+    </form>
+  </div>
+</div>

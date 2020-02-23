@@ -20,4 +20,8 @@ export class AppComponent {
     this.router.navigate(['']);
   };
 
+  connectMessage() {
+    if (this.employeeService.isConnected==0) alert("Veuillez (vous inscrire via 'Sign Up' et) vous connecter " +
+      "via 'Login' pour plus de details et de fonctionnalités");
+  }
 }

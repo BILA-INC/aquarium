@@ -32,11 +32,19 @@ export class UpdateEmployeeComponent implements OnInit {
     const lastName = form.value['lastName']; const birthdate = form.value['birthdate'];
     const address = form.value['address']; const secuNum = form.value['secuNum'];
     const password = form.value['password'];
-    this.employee.setAttributes(id, firstName, lastName, birthdate, address, secuNum, password);
+    const position = form.value['position']; const pool = form.value['pool'];
+    const zone = form.value['zone']; const activity = form.value['activity'];
+    this.employee.setAttributes(id, firstName, lastName, birthdate, address, secuNum, password,
+      position, pool, zone, activity);
     this.save();
   }
 
   gotoList() {
     this.router.navigate(['all/employee']);
+  }
+
+  alertMessage() {
+    alert("Your position must be 'MANAGER' (Gestionnaire) to perform further action(s) through this item " +
+      "Of course, you also have to get yourself identified");
   }
 }

@@ -1,0 +1,29 @@
+<div *ngIf="this.employeeService.isConnected === 1">
+  <div *ngIf="activity">
+    <div>
+      <label><b>ID: </b></label> {{activity.id}}
+    </div>
+    <div>
+      <label><b>Day: </b></label> {{activity.day}}
+    </div>
+    <div>
+      <label><b>Name: </b></label> {{activity.name}}
+    </div>
+    <div>
+      <label><b>Starting Hour: </b></label> {{activity.startingHour}}
+    </div>
+    <div>
+      <label><b>Ending Hour: </b></label> {{activity.endingHour}}
+    </div>
+    <div>
+      <label><b>Clearance (Public/Private) </b></label> {{activity.publicPrivate}}
+    </div>
+  </div>
+</div>
+
+<h1 *ngIf="this.employeeService.isConnected == 0"> you've to get identified in order to view further details </h1>
+
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to the listing of activities</button><br>

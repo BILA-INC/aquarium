@@ -21,6 +21,9 @@ import { SpecyDetailsComponent } from './specy/specy-details/specy-details.compo
 import { SpecyListComponent } from './specy/specy-list/specy-list.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { ActivityDetailsComponent } from './activity/activity-details/activity-details.component';
+import { ActivityListComponent } from './activity/activity-list/activity-list.component';
+import { CreateActivityComponent } from './activity/create-activity/create-activity.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,11 @@ import { ContactComponent } from './contact/contact.component';
 
     AboutComponent,
 
-    ContactComponent
+    ContactComponent,
+
+    ActivityDetailsComponent,
+    ActivityListComponent,
+    CreateActivityComponent
   ],
   imports: [
     BrowserModule,

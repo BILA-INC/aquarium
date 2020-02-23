@@ -41,7 +41,7 @@ export class AnimalListComponent implements OnInit {
   }
 
   detailsAlert() {
-      alert("you've to get identified in order to view further details or delete an item!");
+      alert("you've to get identified as 'Manager' (gestionnaire) in order to view further details or delete an item!");
   }
 }
 

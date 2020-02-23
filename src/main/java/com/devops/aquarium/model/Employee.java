@@ -25,15 +25,8 @@ public class Employee {
     private String lastName;
     //Privacy-related attributes
     //@Length(min=1, max=5, message="Wrong Numéro de Sécu")
-    private String birthdate;
-    private String address;
-    private long secuNum;
-    private String password;
-
-//Additional attributes
-    //private List<String> sectors;
-    //private List<String> pools;
-    //private List<String> activities;
+    private String birthdate; private String address; private long secuNum; private String password; private String position;
+    private String pool; private String zone; private String activity;
 
     public Employee() {}
 
@@ -65,6 +58,14 @@ public class Employee {
     public void setSecuNum(long numSecu) { this.secuNum = numSecu; }
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
+    public String getPosition() { return position; }
+    public void setPosition(String position) { this.position = position; }
+    public String getPool() { return pool; }
+    public void setPool(String pool) { this.pool = pool; }
+    public String getZone() { return zone; }
+    public void setZone(String zone) { this.zone = zone; }
+    public String getActivity() { return activity; }
+    public void setActivity(String activity) { this.activity = activity; }
 
     @Override
     public String toString() {
@@ -76,6 +77,10 @@ public class Employee {
                 ", address='" + address + '\'' +
                 ", secuNum=" + secuNum +
                 ", password='" + password + '\'' +
+                ", position='" + position + '\'' +
+                ", pool='" + pool + '\'' +
+                ", zone='" + zone + '\'' +
+                ", activity='" + activity + '\'' +
                 '}';
     }
 }

@@ -8,9 +8,9 @@ export class EmployeeService {
 
   private baseUrl = 'http://localhost:9090';
   public isConnected : number;
-  public userName : String;
+  public userName : String; public position : String;
 
-  constructor(private http: HttpClient) { this.isConnected = 0; }
+  constructor(private http: HttpClient) { this.isConnected = 0; this.position='A'; }
 
   getEmployeeById(id: number): Observable<any> {return this.http.get(`${this.baseUrl}/all/employee/${id}`);}
 

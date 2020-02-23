@@ -1,38 +1,46 @@
-<nav class="">
+<nav class="" (click)="connectMessage()">
   <!-- Left links -->
   <button class="dropbtn"><a routerLink=""  routerLinkActive="active">Home</a></button>
   <div class="dropdown">
     <button class="dropbtn">Employee</button>
     <div class="dropdown-content">
       <a routerLink="all/employee" class="nav-link" routerLinkActive="active">All Employees</a>
-      <a routerLink="add/employee" class="nav-link" routerLinkActive="active">New Employee</a>
-      <a routerLink="update/employee" class="nav-link" routerLinkActive="active">Update Employee</a>
+      <a routerLink="add/employee" class="nav-link" routerLinkActive="active">Sign Up</a>
+      <a routerLink="update/employee" class="nav-link" routerLinkActive="active">Gestionnaire: Update Employee (affecter, etc...)</a>
     </div>
   </div>
   <div class="dropdown">
     <button class="dropbtn">Animal</button>
     <div class="dropdown-content">
       <a routerLink="all/animal" class="nav-link" routerLinkActive="active">All Animals</a>
-      <a routerLink="add/animal" class="nav-link" routerLinkActive="active">New Animal</a>
+      <a routerLink="add/animal" class="nav-link" routerLinkActive="active">New/Update Animal</a>
     </div>
   </div>
   <div class="dropdown">
     <button class="dropbtn">Specy</button>
     <div class="dropdown-content">
       <a routerLink="all/specy" class="nav-link" routerLinkActive="active">All Species</a>
-      <a routerLink="add/specy" class="nav-link" routerLinkActive="active">New Specy</a>
+      <a routerLink="add/specy" class="nav-link" routerLinkActive="active">New/Update Specy</a>
     </div>
   </div>
   <div class="dropdown">
     <button class="dropbtn">Pool</button>
     <div class="dropdown-content">
       <a routerLink="all/pool" class="nav-link" routerLinkActive="active">All Pools</a>
-      <a routerLink="add/pool" class="nav-link" routerLinkActive="active">New Pool</a>
+      <a routerLink="add/pool" class="nav-link" routerLinkActive="active">New/Update Pool</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <button class="dropbtn">Activity</button>
+    <div class="dropdown-content">
+      <a routerLink="all/activity" class="nav-link" routerLinkActive="active">All Activities</a>
+      <a routerLink="add/activity" class="nav-link" routerLinkActive="active">New/Update Activity</a>
     </div>
   </div>
   <!-- Right links -->
   <div class="topnav-right">
-      <a routerLink="connexion"  routerLinkActive="active" *ngIf="this.employeeService.isConnected == 0">Connexion</a>
+      <a routerLink="add/employee"  routerLinkActive="active" *ngIf="this.employeeService.isConnected == 0">Sign Up</a>
+      <a routerLink="connexion"  routerLinkActive="active" *ngIf="this.employeeService.isConnected == 0">Login</a>
       <a routerLink="connexion"  *ngIf="this.employeeService.isConnected === 1" (click)="disconnect()" >
         You're connected as : {{this.employeeService.userName}}
       - Disconnect ?</a>
@@ -40,7 +48,8 @@
       <a routerLink="contact">Contact us</a>
   </div>
 </nav>
-
+Vous devez vous (inscrire et vous) connecter, sinon vous pouvez presque rien faire. Après connexion et selon votre statut, vous aurez accès ou pas à telle ou telle fonctionnalité
+<br>Pour plus de details, cliquez sur 'About' (en haut à droite).
 <div class="container" >
   <br>
   <h2 style="text-align: center;" *ngIf="this.employeeService.isConnected === 0">{{title}}</h2>

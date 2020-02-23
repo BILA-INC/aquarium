@@ -2,6 +2,7 @@ import { Observable } from "rxjs";
 import { PoolService } from "../pool.service";
 import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
+import {EmployeeService} from "../../employee/employee.service";
 
 @Component({
   selector: "app-pool-list",
@@ -14,7 +15,7 @@ export class PoolListComponent implements OnInit {
   pools: Observable<any>;
 
   constructor(private poolService: PoolService,
-              private router: Router) {}
+              private router: Router, private employeeService: EmployeeService) {}
 
   ngOnInit() {
     this.reloadData();
@@ -36,6 +37,10 @@ export class PoolListComponent implements OnInit {
 
   poolDetails(id: number){
     this.router.navigate(['details/pool', id]);
+  }
+
+  detailsAlert() {
+    alert("you've to get identified as 'Manager' (gestionnaire) in order to view further details or delete an item!");
   }
 }
 

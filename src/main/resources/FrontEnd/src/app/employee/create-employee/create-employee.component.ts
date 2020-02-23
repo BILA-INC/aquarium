@@ -31,7 +31,10 @@ export class CreateEmployeeComponent implements OnInit {
     const lastName = form.value['lastName']; const birthdate = form.value['birthdate'];
     const address = form.value['address']; const secuNum = form.value['secuNum'];
     const password = form.value['password'];
-    this.employee.setAttributes(id, firstName, lastName, birthdate, address, secuNum, password);
+    const position = form.value['position']; const pool = form.value['pool'];
+    const zone = form.value['zone']; const activity = form.value['activity'];
+    this.employee.setAttributes(id, firstName, lastName, birthdate, address, secuNum, password,
+      position, pool, zone, activity);
     this.save();
   }
 

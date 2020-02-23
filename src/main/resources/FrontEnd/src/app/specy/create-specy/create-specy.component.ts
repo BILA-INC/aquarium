@@ -3,6 +3,7 @@ import { Specy } from '../specy';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {NgForm} from "@angular/forms";
+import {EmployeeService} from "../../employee/employee.service";
 
 @Component({
   selector: 'app-create-specy',
@@ -15,7 +16,7 @@ export class CreateSpecyComponent implements OnInit {
   specy: Specy = new Specy();
 
   constructor(private specyService: SpecyService,
-              private router: Router) { }
+              private router: Router, private employeeService: EmployeeService) { }
 
   ngOnInit() {
   }
@@ -37,5 +38,9 @@ export class CreateSpecyComponent implements OnInit {
   gotoList() {
     alert("Specy successfully added!")
     this.router.navigate(['all/specy']);
+  }
+
+  detailsAlert() {
+    alert("you've to get identified in order to view further details or delete an item!");
   }
 }

@@ -1,28 +1,42 @@
 <script> document.redirect.reload(true) </script>
-<div class="panel panel-primary">
+<div class="panel panel-primary" *ngIf="this.employeeService.isConnected == 1">
   <div class="panel-heading">
-    <h2>Pool List</h2>
+    <h4>Pool List-You must be connected as 'Manager' to view further details</h4>
   </div>
   <div class="panel-body">
     <table class="table table-striped">
       <thead>
       <tr>
         <th>ID</th>
+        <th>Pool</th>
         <th>Max Population</th>
         <th>Max Volume</th>
-        <th>Is clean ?</th>
         <!-- <th>Actions</th> -->
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let pool of pools | async">
         <td>{{this.pool.id}}</td>
+        <td>{{pool.name}}</td>
         <td>{{pool.maxPopulation}}</td>
         <td>{{pool.maxVolume}}</td>
-        <td>{{pool.isClean}}</td>
-        <td><button (click)="deletePool(pool.id)" class="btn btn-danger">Delete</button>
+
+        <p *ngIf="this.employeeService.isConnected == 1">
+        <td *ngIf="this.employeeService.position == 'Manager' ">
+          <button (click)="deletePool(pool.id)" class="btn btn-danger">Delete</button>
           <button (click)="poolDetails(pool.id)" class="btn btn-info" style="margin-left: 10px">More details</button>
         </td>
+        <td *ngIf="this.employeeService.position != 'Manager' ">
+          <button (click)="detailsAlert()" class="btn btn-danger">Delete</button>
+          <button (click)="detailsAlert()" class="btn btn-info" style="margin-left: 10px">More details</button>
+        </td>
+        </p>
+
+        <td *ngIf="this.employeeService.isConnected == 0">
+          <button (click)="detailsAlert()" class="btn btn-danger">Delete</button>
+          <button (click)="detailsAlert()" class="btn btn-info" style="margin-left: 10px">More details</button>
+        </td>
+
       </tr>
       </tbody>
     </table>
