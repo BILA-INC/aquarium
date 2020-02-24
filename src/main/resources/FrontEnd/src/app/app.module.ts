@@ -24,6 +24,9 @@ import { ContactComponent } from './contact/contact.component';
 import { ActivityDetailsComponent } from './activity/activity-details/activity-details.component';
 import { ActivityListComponent } from './activity/activity-list/activity-list.component';
 import { CreateActivityComponent } from './activity/create-activity/create-activity.component';
+import { CreateTimetableComponent } from './timetable/create-timetable/create-timetable.component';
+import { TimetableDetailsComponent } from './timetable/timetable-details/timetable-details.component';
+import { TimetableListComponent } from './timetable/timetable-list/timetable-list.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,11 @@ import { CreateActivityComponent } from './activity/create-activity/create-activ
 
     ActivityDetailsComponent,
     ActivityListComponent,
-    CreateActivityComponent
+    CreateActivityComponent,
+
+    CreateTimetableComponent,
+    TimetableDetailsComponent,
+    TimetableListComponent
   ],
   imports: [
     BrowserModule,

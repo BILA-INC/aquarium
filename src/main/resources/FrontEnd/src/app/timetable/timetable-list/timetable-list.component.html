@@ -1,7 +1,7 @@
 <script> document.redirect.reload(true) </script>
 <div class="panel panel-primary" *ngIf="this.employeeService.isConnected == 1">
   <div class="panel-heading">
-    <h4>Timetable: Listing of Activities Per Day</h4>
+    <h4>Timetable Per Day</h4>
   </div>
   <div class="panel-body">
     <table class="table table-striped">
@@ -9,22 +9,20 @@
       <tr>
         <th>ID</th>
         <th>Day</th>
-        <th>Name</th>
-        <th>Public / Private Clearance</th>
+        <th>Activity</th>
         <!-- <th>Actions</th> -->
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let activity of activities | async">
-        <td>{{this.activity.id}}</td>
-        <td>{{activity.day}}</td>
-        <td>{{activity.name}}</td>
-        <td>{{activity.publicPrivate}}</td>
+      <tr *ngFor="let timetable of timetables | async">
+        <td>{{this.timetable.id}}</td>
+        <td>{{timetable.day}}</td>
+        <td>{{timetable.activity}}</td>
 
         <td *ngIf="this.employeeService.isConnected == 1">
-          <button (click)="deleteActivity(activity.id)" *ngIf="this.employeeService.position == 'Manager' " class="btn btn-danger">Delete</button>
+          <button (click)="deleteTimetable(timetable.id)" *ngIf="this.employeeService.position == 'Manager' " class="btn btn-danger">Delete</button>
           <button (click)="detailsAlert()" *ngIf="this.employeeService.position != 'Manager' " class="btn btn-danger">Delete</button>
-          <button (click)="activityDetails(activity.id)" class="btn btn-info" style="margin-left: 10px">More details</button>
+          <button (click)="timetableDetails(timetable.id)" class="btn btn-info" style="margin-left: 10px">More details</button>
         </td>
 
         <td *ngIf="this.employeeService.isConnected == 0">
@@ -37,3 +35,4 @@
     </table>
   </div>
 </div>
+

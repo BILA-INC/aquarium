@@ -1,0 +1,21 @@
+<div *ngIf="timetable" >
+  <div>
+    <label><b>ID: </b></label> {{timetable.id}}
+  </div>
+  <div>
+    <label><b>Day: </b></label> {{timetable.day}}
+  </div>
+  <div>
+    <label><b>Activity: </b></label> {{timetable.activity}}
+  </div>
+  <div>
+    <label><b>Starting Hour: </b></label> {{timetable.startingHour}}
+  </div>
+  <div>
+    <label><b>Ending Hour: </b></label> {{timetable.endingHour}}
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to listing</button><br>

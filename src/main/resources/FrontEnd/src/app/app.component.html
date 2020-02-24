@@ -37,13 +37,20 @@
       <a routerLink="add/activity" class="nav-link" routerLinkActive="active">New/Update Activity</a>
     </div>
   </div>
+  <div class="dropdown">
+    <button class="dropbtn">Timetable</button>
+    <div class="dropdown-content">
+      <a routerLink="all/timetable" class="nav-link" routerLinkActive="active">All Timetables</a>
+      <a routerLink="add/timetable" class="nav-link" routerLinkActive="active">New/Update Timetable</a>
+    </div>
+  </div>
   <!-- Right links -->
   <div class="topnav-right">
       <a routerLink="add/employee"  routerLinkActive="active" *ngIf="this.employeeService.isConnected == 0">Sign Up</a>
       <a routerLink="connexion"  routerLinkActive="active" *ngIf="this.employeeService.isConnected == 0">Login</a>
       <a routerLink="connexion"  *ngIf="this.employeeService.isConnected === 1" (click)="disconnect()" >
-        You're connected as : {{this.employeeService.userName}}
-      - Disconnect ?</a>
+        You're connected as : {{this.employeeService.userName}} - Your position is: {{this.employeeService.position}}
+      - Log Out ?</a>
       <a routerLink="about">About</a>
       <a routerLink="contact">Contact us</a>
   </div>

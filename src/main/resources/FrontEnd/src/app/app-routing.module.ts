@@ -19,6 +19,9 @@ import {ContactComponent} from "./contact/contact.component";
 import {ActivityListComponent} from "./activity/activity-list/activity-list.component";
 import {CreateActivityComponent} from "./activity/create-activity/create-activity.component";
 import {ActivityDetailsComponent} from "./activity/activity-details/activity-details.component";
+import {CreateTimetableComponent} from "./timetable/create-timetable/create-timetable.component";
+import {TimetableListComponent} from "./timetable/timetable-list/timetable-list.component";
+import {TimetableDetailsComponent} from "./timetable/timetable-details/timetable-details.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
@@ -45,6 +48,10 @@ const routes: Routes = [
   { path: 'all/activity', component: ActivityListComponent },
   { path: 'add/activity', component: CreateActivityComponent },
   { path: 'details/activity/:id', component: ActivityDetailsComponent },
+
+  { path: 'all/timetable', component: TimetableListComponent },
+  { path: 'add/timetable', component: CreateTimetableComponent },
+  { path: 'details/timetable/:id', component: TimetableDetailsComponent },
 
   { path: 'about', component: AboutComponent },
 
