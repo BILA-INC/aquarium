@@ -65,6 +65,8 @@ public class Specy {
         this.dangerLevel = dangerLevel;
     }
 
+    //void update(Specy specy)  {}
+
     @Override
     public String toString() {
         return "Specy{" +

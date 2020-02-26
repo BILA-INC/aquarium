@@ -1,7 +1,10 @@
 package com.devops.aquarium.web.controller;
 
 import com.devops.aquarium.dao.EmployeeDao;
+import com.devops.aquarium.model.Activity;
 import com.devops.aquarium.model.Employee;
+import com.devops.aquarium.web.exceptions.BRException;
+import com.devops.aquarium.web.exceptions.ISException;
 import com.devops.aquarium.web.exceptions.IdNotFoundException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -30,6 +33,7 @@ public class EmployeeController {
         //FilterProvider sorterId = new SimpleFilterProvider().addFilter("Sorter", sorter);
         //MappingJacksonValue emp = new MappingJacksonValue(employee);
         //emp.setFilters(sorterId);
+        if(employees == null) throw new ISException("I_S"); //Customized 500
         return employees;
     }
 
@@ -43,6 +47,7 @@ public class EmployeeController {
 
     @GetMapping(value = "/employees/GT/{id}")
     public List<Employee> findByIdGT(@PathVariable int id) {
+
         return employeeDao.findByIdGreaterThan(id);
     }
 
@@ -70,13 +75,21 @@ public class EmployeeController {
 
     @DeleteMapping (value = "delete/employee/{id}")
     public void deleteEmployee(@PathVariable int id) {
+
+        Employee employee=employeeDao.findById(id);
+        if(employee==null) throw new IdNotFoundException("Wrong Id"); //Customized exception encompassing '404 NOT FOUND' case
         employeeDao.deleteById(id);
     }
     @PutMapping (value = "update/employee",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public Employee updateEmployee(@Valid @RequestBody Employee employee) {
-        return employeeDao.save(employee);
+
+        Employee employeeA=employeeDao.findById(employee.getId());
+        if (employeeA==null) throw new IdNotFoundException("Wrong Id"); //Customized exception encompassing '404 NOT FOUND' case
+        Employee employeeT=employeeDao.save(employee);
+        if (employeeT==null) throw new BRException("BR"); //Customized 400
+        return employeeT;
     }
 
 }

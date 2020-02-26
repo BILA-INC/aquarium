@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 public interface AnimalDao extends JpaRepository<Animal, Integer> {
 
     Animal findById(int id); // In order to avoid using Object as wrapper for return value
-    Animal findByName(String test);
-    void update(Animal animal);
+    //Animal findByName(String test);
+    //void update(Animal animal);
 }

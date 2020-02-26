@@ -1,13 +1,17 @@
 package com.devops.aquarium.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 
 @Entity
 public class Activity {
 
     private @Id int id;
-    private String day; private String startingHour; private String endingHour; private String publicPrivate; private String name;
+    private String day;
+    private String startingHour;
+    private String endingHour; private String publicPrivate; private String name;
     private boolean publicPrivateB;
 
     public Activity() {}

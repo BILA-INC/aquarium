@@ -1,9 +1,9 @@
 package com.devops.aquarium.web.controller;
 
-import com.devops.aquarium.dao.AnimalDao;
 import com.devops.aquarium.dao.SpecyDao;
-import com.devops.aquarium.model.Animal;
 import com.devops.aquarium.model.Specy;
+import com.devops.aquarium.web.exceptions.BRException;
+import com.devops.aquarium.web.exceptions.ISException;
 import com.devops.aquarium.web.exceptions.IdNotFoundException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -29,8 +29,9 @@ public class SpecyController {
 
     @RequestMapping(value="all/specy", method= RequestMethod.GET)
     public Iterable<Specy> findAllSpecies() {
-        Iterable<Specy> species= specyDao.findAll();
-        return species;
+        List<Specy> specy = specyDao.findAll();
+        if(specy == null) throw new ISException("I_S");//Customized 500
+        return specy;
     }
 
     @ApiOperation(value = "Send back a given specy as far as the provided Id is correct")
@@ -59,6 +60,9 @@ public class SpecyController {
 
     @DeleteMapping (value = "delete/specy/{id}")
     public void deleteSpecy(@PathVariable int id) {
+
+        Specy specy=specyDao.findById(id);
+        if(specy==null) throw new IdNotFoundException("Wrong Id"); //Customized exception encompassing '404 NOT FOUND' case
         specyDao.deleteById(id);
     }
 
@@ -66,7 +70,12 @@ public class SpecyController {
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public Specy updateSpecy(@Valid @RequestBody Specy specy) {
-        return specyDao.save(specy);
+
+        Specy specyA=specyDao.findById(specy.getId());
+        if (specyA==null) throw new IdNotFoundException("Wrong Id"); //Customized exception encompassing '404 NOT FOUND' case
+        Specy specyT=specyDao.save(specy);
+        if (specyT==null) throw new BRException("BR"); //Customized 400
+        return specyT;
     }
 
 }

@@ -2,6 +2,9 @@ package com.devops.aquarium.web.controller;
 
 import com.devops.aquarium.dao.AnimalDao;
 import com.devops.aquarium.model.Animal;
+import com.devops.aquarium.model.Animal;
+import com.devops.aquarium.web.exceptions.BRException;
+import com.devops.aquarium.web.exceptions.ISException;
 import com.devops.aquarium.web.exceptions.IdNotFoundException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -12,9 +15,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 
-@Api( description="API for, inter allia, CRUD-related operations Animal type")
+@Api( description="API for, inter allia, CRUD-related operations on Animal type")
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class AnimalController {
@@ -24,8 +28,9 @@ public class AnimalController {
 
     @RequestMapping(value="all/animal", method= RequestMethod.GET)
     public Iterable<Animal> findAllAnimals() {
-        Iterable<Animal> animals= animalDao.findAll();
-        return animals;
+        List<Animal> animal = animalDao.findAll();
+        if(animal == null) throw new ISException("I_S");//Customized 500
+        return animal;
     }
 
     @ApiOperation(value = "Send back a given animal as far as the provided Id is correct")
@@ -54,6 +59,9 @@ public class AnimalController {
 
     @DeleteMapping (value = "delete/animal/{id}")
     public void deleteAnimal(@PathVariable int id) {
+
+        Animal animal=animalDao.findById(id);
+        if(animal==null) throw new IdNotFoundException("Wrong Id"); //Customized exception encompassing '404 NOT FOUND' case
         animalDao.deleteById(id);
     }
 
@@ -61,7 +69,12 @@ public class AnimalController {
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public Animal updateAnimal(@Valid @RequestBody Animal animal) {
-        return animalDao.save(animal);
+
+        Animal animalA=animalDao.findById(animal.getId());
+        if (animalA==null) throw new IdNotFoundException("Wrong Id"); //Customized exception encompassing '404 NOT FOUND' case
+        Animal animalT=animalDao.save(animal);
+        if (animalT==null) throw new BRException("BR"); //Customized 400
+        return animalT;
     }
 
 }

@@ -2,6 +2,9 @@ package com.devops.aquarium.web.controller;
 
 import com.devops.aquarium.dao.PoolDao;
 import com.devops.aquarium.model.Pool;
+import com.devops.aquarium.model.Pool;
+import com.devops.aquarium.web.exceptions.BRException;
+import com.devops.aquarium.web.exceptions.ISException;
 import com.devops.aquarium.web.exceptions.IdNotFoundException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -13,6 +16,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 @Api( description="API for, inter allia, CRUD-related operations on pools.")
 @RestController
@@ -24,7 +28,10 @@ public class PoolController {
 
     @RequestMapping(value="all/pool", method= RequestMethod.GET)
     public Iterable<Pool> findAllPools() {
-        return poolDao.findAll();
+
+        List<Pool> pool = poolDao.findAll();
+        if(pool == null) throw new ISException("I_S");//Customized 500
+        return pool;
     }
 
     @ApiOperation(value = "Send back a given pool")
@@ -53,6 +60,9 @@ public class PoolController {
 
     @DeleteMapping (value = "delete/pool/{id}")
     public void deletePool(@PathVariable int id) {
+
+        Pool pool=poolDao.findById(id);
+        if(pool==null) throw new IdNotFoundException("Wrong Id"); //Customized exception encompassing '404 NOT FOUND' case
         poolDao.deleteById(id);
     }
 
@@ -60,7 +70,12 @@ public class PoolController {
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public Pool updatePool(@Valid @RequestBody Pool pool) {
-        return poolDao.save(pool);
+
+        Pool poolA=poolDao.findById(pool.getId());
+        if (poolA==null) throw new IdNotFoundException("Wrong Id"); //Customized exception encompassing '404 NOT FOUND' case
+        Pool poolT=poolDao.save(pool);
+        if (poolT==null) throw new BRException("BR"); //Customized 400
+        return poolT;
     }
 
 }

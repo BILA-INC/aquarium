@@ -2,6 +2,7 @@ package com.devops.aquarium.web.controller;
 
 import com.devops.aquarium.dao.TimetableDao;
 import com.devops.aquarium.model.Timetable;
+import com.devops.aquarium.web.exceptions.BRException;
 import com.devops.aquarium.web.exceptions.IdNotFoundException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -14,7 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 
-@Api( description="API for, inter allia, CRUD-related operations on activities.")
+@Api( description="API for, inter allia, CRUD-related operations on timetables.")
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class TimetableController {
@@ -53,6 +54,9 @@ public class TimetableController {
 
     @DeleteMapping (value = "delete/timetable/{id}")
     public void deleteTimetable(@PathVariable int id) {
+
+        Timetable timetable=timetableDao.findById(id);
+        if(timetable==null) throw new IdNotFoundException("Wrong Id"); //Customized exception encompassing '404 NOT FOUND' case
         timetableDao.deleteById(id);
     }
 
@@ -60,6 +64,11 @@ public class TimetableController {
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public Timetable updateTimetable(@Valid @RequestBody Timetable timetable) {
-        return timetableDao.save(timetable);
+
+        Timetable timetableA=timetableDao.findById(timetable.getId());
+        if (timetableA==null) throw new IdNotFoundException("Wrong Id"); //Customized exception encompassing '404 NOT FOUND' case
+        Timetable timetableT=timetableDao.save(timetable);
+        if (timetableT==null) throw new BRException("BR"); //Customized 400
+        return timetableT;
     }
 }

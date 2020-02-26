@@ -9,7 +9,7 @@ public interface PoolDao extends JpaRepository<Pool, Integer> {
 
     Pool findById(int id);
 
-    Pool findByName(String test);
+    //Pool findByName(String test);
 
-    void update(Pool pool);
+    //void update(Pool pool);
 }

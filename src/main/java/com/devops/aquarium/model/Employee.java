@@ -10,22 +10,23 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-//@JsonIgnoreProperties(value = {"numSS"}) //Listing attributes to not send in the JSON file
+//@JsonIgnoreProperties(value = {"secuNum"}) //Listing attributes to not send in the JSON file
 @Entity
 public class Employee {
 
     //Employee's Personal File fields
     @Id
-    //@GeneratedValue
-    //@Min(value = 1)
+    @GeneratedValue
+    @Min(value = 1)
     private int id;
-    //@Length(min=1, max=40)
+    @Length(min=1, max=40)
     private String firstName;
-    //@Length(min=3, max=40)
+    @Length(min=3, max=40)
     private String lastName;
     //Privacy-related attributes
-    //@Length(min=1, max=5, message="Wrong Numéro de Sécu")
-    private String birthdate; private String address; private long secuNum; private String password; private String position;
+    private String birthdate; private String address;
+    @Length(min=5, max=15, message="Wrong Numéro de Sécu")
+    private long secuNum; private String password; private String position;
     private String pool; private String zone; private String activity;
 
     public Employee() {}

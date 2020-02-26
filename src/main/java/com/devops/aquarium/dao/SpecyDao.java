@@ -9,7 +9,7 @@ public interface SpecyDao extends JpaRepository<Specy, Integer> {
 
     Specy findById(int id);
 
-    Specy findByName(String test);
+    //Specy findByName(String test);
 
-    void update(Specy specy);
+    //void update(Specy specy);
 }
