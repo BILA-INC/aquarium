@@ -1,1 +1,11 @@
+Lancement:
 
+1_Back-End
+java -jar /Users/username/Desktop/Aquarium/target/aquarium-0.0.1-SNAPSHOT.jar
+
+2_Front-End (en supposant que le dossier
+cd /Users/username/Desktop/aquarium/src/main/resources/FrontEnd
+ng serve --open
+
+Note:
+*Referencement des repertoires d'excecution : adresse absolue (donnée à titre d'exemple), variant selon l'envirronement 
