@@ -23,7 +23,7 @@ public class ActivityController {
     private ActivityDao activityDao;
 
     @RequestMapping(value="all/activity", method= RequestMethod.GET)
-    public Iterable<Activity> findAllActivitys() {
+    public Iterable<Activity> findAllActivities() {
         return activityDao.findAll();
     }
 

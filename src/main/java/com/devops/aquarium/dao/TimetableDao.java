@@ -8,4 +8,8 @@ import org.springframework.stereotype.Repository;
 public interface TimetableDao extends JpaRepository<Timetable, Integer> {
 
         Timetable findById(int id);
+
+    Timetable findByName(String test);
+
+    void update(Timetable timetable);
 }

@@ -61,4 +61,11 @@ public class Timetable {
                 ", endingHour='" + endingHour + '\'' +
                 '}';
     }
+
+    public void setName(String name) {
+    }
+
+    public String getName() {
+        return "";
+    }
 }

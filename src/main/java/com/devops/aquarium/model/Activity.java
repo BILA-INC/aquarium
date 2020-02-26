@@ -8,6 +8,7 @@ public class Activity {
 
     private @Id int id;
     private String day; private String startingHour; private String endingHour; private String publicPrivate; private String name;
+    private boolean publicPrivateB;
 
     public Activity() {}
 
@@ -65,5 +66,13 @@ public class Activity {
                 ", publicPrivate='" + publicPrivate + '\'' +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    public void setPublicPrivateB(boolean b) {
+    }
+
+    public boolean getPublicPrivateB() {
+
+        return this.publicPrivateB;
     }
 }

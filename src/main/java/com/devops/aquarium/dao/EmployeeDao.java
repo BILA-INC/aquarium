@@ -17,5 +17,6 @@ public interface EmployeeDao extends JpaRepository<Employee, Integer> {
 
     //Methods block :: SQL Query deducted by JPA : Prototype Declaration required
     List<Employee> findByIdGreaterThan(int id);
-
+    Employee findByName(String test);
+    void update(Employee employee);
 }

@@ -8,4 +8,8 @@ import org.springframework.stereotype.Repository;
 public interface SpecyDao extends JpaRepository<Specy, Integer> {
 
     Specy findById(int id);
+
+    Specy findByName(String test);
+
+    void update(Specy specy);
 }

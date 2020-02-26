@@ -83,4 +83,11 @@ public class Employee {
                 ", activity='" + activity + '\'' +
                 '}';
     }
+
+    public void setName(String test) {
+    }
+
+    public String getName() {
+        return new String("NameTest");
+    }
 }

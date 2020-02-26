@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface ActivityDao extends JpaRepository<Activity, Integer> {
 
     Activity findById(int id);
+    Activity findByName(String name);
+    void update(Activity activity);
 }

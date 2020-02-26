@@ -8,4 +8,8 @@ import org.springframework.stereotype.Repository;
 public interface PoolDao extends JpaRepository<Pool, Integer> {
 
     Pool findById(int id);
+
+    Pool findByName(String test);
+
+    void update(Pool pool);
 }
