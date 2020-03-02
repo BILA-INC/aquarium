@@ -1,11 +1,22 @@
-Lancement:
+I-Lancement (via Command Line):
 
 1_Back-End
 java -jar /Users/username/Desktop/Aquarium/target/aquarium-0.0.1-SNAPSHOT.jar
 
-2_Front-End (en supposant que le dossier
+2_Front-End
 cd /Users/username/Desktop/aquarium/src/main/resources/FrontEnd
 ng serve --open
 
 Note:
-*Referencement des repertoires d'excecution : adresse absolue (donnée à titre d'exemple), variant selon l'envirronement 
+Référencement des repertoires d'excecution : adresse absolue (donnée à titre d'exemple), variant selon l'environnement d'exécution
+
+II-Après lancement des serveurs :
+
+1-Un manuel est disponible à : http://localhost:4200/about
+
+2-La structure de la H2 Embedded Data Base peut être consultée en temps réel via http://localhost:9090/h2-console/
+(cliquez simplement sur "Connect").
+Des opérations "classiques" (SELECT, ...) peuvent aussi être effectuées en "dur" via cette meme interface.
+
+3-Une documentation technique est disponible à : http://localhost:9090/swagger-ui.html
+
