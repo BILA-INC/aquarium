@@ -56,7 +56,7 @@
         <label for="position"> Position ---> </label>
         <select id="position" name="position" ngModel>
           <option value="Responsable">Responsable</option> <option value="Manager">Manager</option>
-          <option value="Visitor">Visitor</option> <option value="Staff Member">Staff Memeber</option>
+          <option value="Visitor">Visitor</option> <option value="Staff Member">Staff Member</option>
           <option value="Other">Staff Other</option>
         </select>
       </div>
@@ -89,8 +89,8 @@
       </div>
 
       <input type="reset" value="Reset" class="btn btn-primary"> <------>
-      <button class="btn btn-primary" type="submit" *ngIf="this.employeeService.position=='MANAGER' ">Save</button>
-      <button class="btn btn-primary" type="submit" (click)="this.alertMessage()">Save</button>
+      <button class="btn btn-primary" type="submit" >Save</button> <!--*ngIf=" this.employeeService.position=='MANAGER' "-->
+      <!--<button class="btn btn-primary" type="submit" (click)="this.alertMessage()">Save</button>-->
     </form>
   </div>
 </div>

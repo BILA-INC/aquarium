@@ -25,8 +25,8 @@ public class Employee {
     private String lastName;
     //Privacy-related attributes
     private String birthdate; private String address;
-    @Length(min=5, max=15, message="Wrong Numéro de Sécu")
-    private long secuNum; private String password; private String position;
+    //@Length(min=5, max=15, message="Wrong Numéro de Sécu")
+    private int secuNum; private String password; private String position;
     private String pool; private String zone; private String activity;
 
     public Employee() {}
@@ -55,8 +55,8 @@ public class Employee {
     public void setBirthdate(String birthday) { this.birthdate = birthday; }
     public String getAddress() { return this.address; }
     public void setAddress(String address) { this.address = address; }
-    public long getSecuNum() { return secuNum; }
-    public void setSecuNum(long numSecu) { this.secuNum = numSecu; }
+    public int getSecuNum() { return secuNum; }
+    public void setSecuNum(int numSecu) { this.secuNum = numSecu; }
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
     public String getPosition() { return position; }
